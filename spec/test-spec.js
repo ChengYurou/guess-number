@@ -1,5 +1,6 @@
 'use strict'
 const CompareNumber = require('../src/models/compare-number.js');
+const AnswerGenerator = require('../src/models/answer-generator');
 
 describe('guess-number', () => {
   it('should return 0A4B', ()=> {
@@ -33,3 +34,13 @@ describe('guess-number', () => {
   });
 
 });
+
+describe('answer-generator', ()=> {
+  it('return random no reapet',()=>{
+    const result= AnswerGenerator.getRandom();
+    const array = result.split('');
+    array.forEach((item) => {
+      expect(result.indexOf(item)).toEqual(result.lastIndexOf(item));
+    })
+  })
+})

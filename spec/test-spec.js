@@ -1,18 +1,20 @@
 'use strict'
 const CompareNumber = require('../src/models/compare-number.js');
 const AnswerGenerator = require('../src/models/answer-generator');
+const Guess = require('../src/models/guess');
 
 describe('guess-number', () => {
+
+  it('should return 0A0B', ()=> {
+
+    let result = CompareNumber.compare('1234', '5678');
+    expect(result).toEqual('0A0B');
+  });
+
   it('should return 0A4B', ()=> {
 
       let result = CompareNumber.compare('1234', '4321');
       expect(result).toEqual('0A4B');
-  });
-
-  it('should return 1A3B', ()=> {
-
-      let result = CompareNumber.compare('1234', '1423');
-      expect(result).toEqual('1A3B');
   });
 
   it('should return 2A2B', ()=> {
@@ -21,9 +23,10 @@ describe('guess-number', () => {
       expect(result).toEqual('2A2B');
   });
 
-  it('should return 3A1B', ()=> {
 
-    let result = CompareNumber.compare('1234', '1374');
+  it('should return 2A1B', ()=> {
+
+    const result = CompareNumber.compare('1234', '1273');
     expect(result).toEqual('2A1B');
   });
 
@@ -43,4 +46,15 @@ describe('answer-generator', ()=> {
       expect(result.indexOf(item)).toEqual(result.lastIndexOf(item));
     })
   })
-})
+});
+
+describe('guess', ()=> {
+  it('', ()=> {
+    let result = Guess.guessNumber('1234');
+    const resultArray = result.split('');
+
+    expect(result.length).toEqual(4);
+    expect(resultArray[1]).toEqual('A');
+    expect(resultArray[3]).toEqual('B');
+  });
+});

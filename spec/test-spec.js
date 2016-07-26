@@ -50,11 +50,9 @@ describe('answer-generator', ()=> {
 
 describe('guess', ()=> {
   it('', ()=> {
-    let result = Guess.guessNumber('1234');
-    const resultArray = result.split('');
 
-    expect(result.length).toEqual(4);
-    expect(resultArray[1]).toEqual('A');
-    expect(resultArray[3]).toEqual('B');
+    spyOn(AnswerGenerator,'getRandom').and.returnValue('1234');
+    let result = Guess.guessNumber('1234');
+    expect(result).toEqual('4A0B');
   });
 });

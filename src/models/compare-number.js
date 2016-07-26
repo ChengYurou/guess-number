@@ -2,9 +2,7 @@
 class CompareNumber {
 
   static compare(solution, input) {
-    // let countA = 0;
-    // let countB = 0;
-
+    
     const numbers = input.split('');
     const solutions = solution.split('');
     

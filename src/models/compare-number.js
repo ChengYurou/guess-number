@@ -1,21 +1,21 @@
 'use strict'
 class CompareNumber {
 
-  constructor(solution, input) {
-    this.solution = solution;
-    this.input = input;
-  }
+  static compare(solution, input) {
+    // let countA = 0;
+    // let countB = 0;
 
-  compare() {
-    let countA = 0;
+    const numbers = input.split('');
+    const solutions = solution.split('');
+    
+    const countB = numbers.map((number,index) =>
+      solutions[index]!=number && solutions.some(solution => solution===number)
+      ? 1: 0).reduce((a,b) => a+b);
+    
+    const countA = numbers.map((number,index) =>
+    solutions[index]===number?1:0).reduce((a,b)=> a+b);
 
-    this.input.split('').forEach((number) => {
-      if (this.solution.indexOf(number) === this.input.indexOf(number)) {
-        countA++;
-      }
-    })
-
-    return `${countA}A${4 - countA}B`
+    return `${countA}A${countB}B`
   }
 }
 
